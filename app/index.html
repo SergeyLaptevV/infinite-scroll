@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div id="main">
+        <div>
+            <p>
+               <input type="checkbox" ng-model="active">  infinite scroll
+            </p>
+            <p>
+                <input type="number" step="3" min="0" max="12" ng-model="loading">
+            </p>
+        </div>
+        <div  class="column">
+            <div class="photos"  ng-repeat="item in items| limitTo: limit">
+                <img ng-src="{{item.url}}" ng-click="removeItem($index)">
+            </div>
+        </div>
+        <div>
+            <button id="btn" ng-click="loadImg()" ng-disabled="activate">
+                Загрузить еще {{loading}}
+            </button>
+        </div>
+    </div>
+</body>
+</html>
